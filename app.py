@@ -26,7 +26,7 @@ try:
     df = pd.read_csv(r"C:\Users\MSI GAMER\Desktop\LangChain\properties.csv")
     docs = [Document(page_content=row.to_string()) for _, row in df.iterrows()]
 except FileNotFoundError:
-    raise FileNotFoundError("⚠️ Properties CSV file not found at the specified path")
+    raise FileNotFoundError(" Properties CSV file not found at the specified path")
 
 
 embeddings = GoogleGenerativeAIEmbeddings(
@@ -99,10 +99,10 @@ User input:
             if match:
                 try:
                     data = json.loads(match.group(1))
-                    print("✅ Final Collected Data:", data)
+                    print(" Final Collected Data:", data)
                     break
                 except Exception as e:
-                    print("⚠️ Error parsing JSON:", e)
+                    print(" Error parsing JSON:", e)
 
 
 def main():
@@ -118,7 +118,7 @@ def main():
     while True:
         input_text = input("\nUser: ")
         intent = classify_input(input_text, examples)
-        print("🔎 Detected Intent:", intent)
+        print(" Detected Intent:", intent)
 
         if intent == "FAQ":
             result = faq_chain.run(input_text)
@@ -126,7 +126,7 @@ def main():
         elif intent == "ACTION":
             run_action_chat(input_text)
         else:
-            print("🤖 Sorry, I didn't understand the intent of your request.")
+            print(" Sorry, I didn't understand the intent of your request.")
 
 if __name__ == "__main__":
     main()
